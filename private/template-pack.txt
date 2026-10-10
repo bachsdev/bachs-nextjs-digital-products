@@ -1,0 +1,4 @@
+The Template Pack
+
+This is the sample pay-what-you-want download for the Acme Downloads starter.
+Replace the files in private/ with what you sell.

@@ -1,0 +1,5 @@
+The Field Guide
+
+This is the sample download for the Acme Downloads starter.
+Replace the files in private/ with what you sell. Files here are served
+only through /api/downloads to buyers whose order is paid.

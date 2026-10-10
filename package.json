@@ -1,0 +1,34 @@
+{
+  "name": "bachs-nextjs-digital-products",
+  "version": "0.1.0",
+  "private": true,
+  "description": "Starter template: sell digital products with Bachs one-time checkout, pay-what-you-want pricing, and fulfilment from verified webhooks.",
+  "license": "MIT",
+  "scripts": {
+    "dev": "next dev",
+    "build": "next build",
+    "start": "next start",
+    "test": "vitest run",
+    "typecheck": "tsc --noEmit",
+    "setup:products": "node scripts/create-products.mjs",
+    "listen": "bachs listen --forward-to localhost:3000/api/webhooks/bachs --events checkout.completed,collection.succeeded,checkout.expired",
+    "test:smoke": "node scripts/smoke.mjs",
+    "verify": "npm test && npm run typecheck && npm run build && npm run test:smoke"
+  },
+  "engines": {
+    "node": ">=22"
+  },
+  "dependencies": {
+    "@bachs/sdk": "file:vendor/bachs-sdk-1.0.0.tgz",
+    "next": "^16.4.0",
+    "react": "^19.3.0",
+    "react-dom": "^19.3.0"
+  },
+  "devDependencies": {
+    "@types/node": "^22.20.5",
+    "@types/react": "^19.3.0",
+    "@types/react-dom": "^19.3.0",
+    "typescript": "^5.9.3",
+    "vitest": "^4.1.11"
+  }
+}
