@@ -25,8 +25,9 @@ https://docs.bachs.io/build/use-cases/digital-products.
 ## Bachs integration rules
 
 - Use @bachs/sdk for checkout sessions and webhooks.constructEvent for
-  signature verification. The packaged SDK in vendor/ is temporary until the
-  npm release; read vendor/README.md before changing the dependency.
+  signature verification. @bachs/sdk installs from npm at an exact version;
+  when upgrading it, update package.json and package-lock.json together and
+  run npm run verify.
 - Docs: read the Bachs page for the task. Every page is available as Markdown
   by adding .md to its URL, and https://docs.bachs.io/llms.txt lists every
   page. Do not invent endpoints, fields, events or error codes.
