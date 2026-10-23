@@ -1,4 +1,4 @@
-import { webhooks, BachsApiError, BachsWebhookError, type WebhookEvent } from "@bachs/sdk";
+import { webhooks, BachsApiError, BachsConfigError, BachsWebhookError, type WebhookEvent } from "@bachs/sdk";
 import { getCheckoutSession } from "@/lib/bachs";
 import { decide, eventCheckout, FULFILMENT_EVENTS } from "@/lib/fulfilment";
 import { applyEvent, findOrder, isEventProcessed } from "@/lib/store";
@@ -48,8 +48,11 @@ export async function POST(req: Request) {
     return new Response("OK");
   } catch (err) {
     // 5xx so Bachs retries. Never answer 4xx for our own failures.
+    // A configuration error (such as a live key without BACHS_ENVIRONMENT=production)
+    // fails every event the same way, so name it; its message holds no secrets.
     console.error("Bachs webhook processing failed", event.id,
-      err instanceof BachsApiError ? { statusCode: err.statusCode, code: err.errorCode } : "");
+      err instanceof BachsApiError ? { statusCode: err.statusCode, code: err.errorCode }
+        : err instanceof BachsConfigError ? err.message : "");
     return new Response("Could not handle event", { status: 500 });
   }
 }

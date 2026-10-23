@@ -33,7 +33,7 @@ export async function POST(req: Request) {
   } catch (err) {
     if ((err instanceof BachsApiError && !err.outcomeUnknown) || err instanceof BachsConfigError) {
       await discardOrder(order.id);
-      console.error("Bachs refused the checkout", err instanceof BachsApiError ? { statusCode: err.statusCode, code: err.errorCode } : "configuration");
+      console.error("Bachs refused the checkout", err instanceof BachsApiError ? { statusCode: err.statusCode, code: err.errorCode } : err.message);
       return Response.json({ error: "Could not start checkout" }, { status: 502 });
     }
     // The checkout may exist. Keep the order: if the buyer paid, its webhook
