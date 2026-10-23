@@ -8,7 +8,7 @@ It is the working code for the [Sell digital products use case](https://docs.bac
 
 ## SDK dependency
 
-This starter uses the official Bachs SDK, `@bachs/sdk`, for checkout and webhook verification. `npm ci` installs it from npm, pinned to version 1.0.0 in `package.json` and `package-lock.json`.
+This starter uses the official Bachs SDK, `@bachs/sdk`, for checkout and webhook verification. `npm ci` installs it from npm, pinned to version 2.0.0 in `package.json` and `package-lock.json`.
 
 ## Run in sandbox
 

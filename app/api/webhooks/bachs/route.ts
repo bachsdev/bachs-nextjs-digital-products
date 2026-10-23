@@ -49,7 +49,7 @@ export async function POST(req: Request) {
   } catch (err) {
     // 5xx so Bachs retries. Never answer 4xx for our own failures.
     console.error("Bachs webhook processing failed", event.id,
-      err instanceof BachsApiError ? { status: err.status, code: err.errorCode } : "");
+      err instanceof BachsApiError ? { statusCode: err.statusCode, code: err.errorCode } : "");
     return new Response("Could not handle event", { status: 500 });
   }
 }
